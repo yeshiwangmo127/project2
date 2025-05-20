@@ -8,19 +8,27 @@ export default function SelectUserType() {
   const router = useRouter();
   const [userType, setUserType] = useState<string | null>(null);
   const [error, setError] = useState('');
+  const [showDoctorConfirm, setShowDoctorConfirm] = useState(false);
 
   useEffect(() => {
     // Check if user is logged in
     const checkAuth = async () => {
       try {
-        // Here you would typically verify the user's session/token
-        // For now, we'll just check if we have user data in localStorage
         const userData = localStorage.getItem('user');
-        if (!userData) {
+        const storedUserType = localStorage.getItem('currentUserType');
+        
+        if (!userData || !storedUserType) {
           router.push('/login');
           return;
         }
+        
         const user = JSON.parse(userData);
+        if (user.userType !== storedUserType) {
+          setError('Authentication error: User type mismatch');
+          router.push('/login');
+          return;
+        }
+        
         setUserType(user.userType);
       } catch (err) {
         setError('Authentication error');
@@ -36,8 +44,22 @@ export default function SelectUserType() {
       setError(`You have registered as ${userType}. Please continue as ${userType}.`);
       return;
     }
+    if (type === 'doctor') {
+      setShowDoctorConfirm(true);
+      return;
+    }
+    // For patient, proceed as before
     localStorage.setItem('currentUserType', type);
     router.push('/');
+  };
+
+  const handleDoctorConfirm = () => {
+    localStorage.setItem('currentUserType', 'doctor');
+    setShowDoctorConfirm(false);
+    router.push('/');
+  };
+  const handleDoctorCancel = () => {
+    setShowDoctorConfirm(false);
   };
 
   if (error) {
@@ -93,6 +115,28 @@ export default function SelectUserType() {
               Continue as Patient
             </button>
           </div>
+          {showDoctorConfirm && (
+            <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-40">
+              <div className="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full">
+                <h3 className="text-xl font-bold mb-4 text-center">Confirm Doctor Selection</h3>
+                <p className="mb-6 text-center">Are you sure you want to continue as <span className="font-semibold">Doctor</span>?</p>
+                <div className="flex justify-center gap-4">
+                  <button
+                    onClick={handleDoctorConfirm}
+                    className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  >
+                    Confirm
+                  </button>
+                  <button
+                    onClick={handleDoctorCancel}
+                    className="px-6 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

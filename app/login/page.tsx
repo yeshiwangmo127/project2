@@ -20,8 +20,7 @@ export default function CombinedLoginPage() {
     if (role === 'admin') {
       // Hardcoded admin credentials
       if (username === 'admin' && password === 'admin123') {
-        localStorage.setItem('isAdmin', 'true');
-        localStorage.setItem('user', JSON.stringify({ name: username, role: 'admin' }));
+        localStorage.setItem('user', JSON.stringify({ name: username, userType: 'admin' }));
         localStorage.setItem('currentUserType', 'admin');
         router.push('/admin');
       } else {
@@ -43,8 +42,16 @@ export default function CombinedLoginPage() {
           throw new Error(data.message || 'Login failed');
         }
 
+        // Store user data and userType
         localStorage.setItem('user', JSON.stringify(data.user));
-        router.push('/select-user-type');
+        localStorage.setItem('currentUserType', data.user.userType);
+        
+        // Redirect based on user type
+        if (data.user.userType === 'doctor' || data.user.userType === 'patient') {
+          router.push('/select-user-type');
+        } else {
+          router.push('/');
+        }
       } catch (err: any) {
         setError(err.message || 'An error occurred during login');
       }

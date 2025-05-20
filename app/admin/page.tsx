@@ -211,8 +211,8 @@ export default function AdminPage() {
 
         // Calculate stats
         const totalUsers = usersData.length;
-        const totalDoctors = usersData.filter((user: any) => user.role === 'doctor').length;
-        const totalPatients = usersData.filter((user: any) => user.role === 'patient').length;
+        const totalDoctors = usersData.filter((user: any) => user.userType === 'doctor').length;
+        const totalPatients = usersData.filter((user: any) => user.userType === 'patient').length;
         const totalAppointments = appointmentsData.length;
         const recentAppointments = appointmentsData
           .slice(0, 5)

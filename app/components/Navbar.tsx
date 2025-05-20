@@ -62,10 +62,15 @@ export default function Navbar() {
       
       if (user && storedUserType) {
         const userData = JSON.parse(user);
-        setIsLoggedIn(true);
-        setUserName(userData.name || '');
-        setUserType(storedUserType);
-        setProfilePic(userData.profilePic || null);
+        if (userData.userType === storedUserType) {
+          setIsLoggedIn(true);
+          setUserName(userData.name || '');
+          setUserType(storedUserType);
+          setProfilePic(userData.profilePic || null);
+        } else {
+          // Clear invalid state
+          handleLogout();
+        }
       } else {
         setIsLoggedIn(false);
         setUserName('');
@@ -86,6 +91,7 @@ export default function Navbar() {
     setIsLoggedIn(false);
     setUserName('');
     setUserType('');
+    setProfilePic(null);
     router.push('/login');
   };
 
@@ -129,6 +135,15 @@ export default function Navbar() {
           )}
           {isLoggedIn && userType === 'admin' && (
             <Link href="/admin" className="hover:text-blue-200 transition-colors">Admin Dashboard</Link>
+          )}
+          {isLoggedIn && userType === 'doctor' && false && (
+            <>
+              <Link href="/upload-report" className="hover:text-blue-200 transition-colors">Upload Report</Link>
+              <Link href="/doctors/dashboard" className="hover:text-blue-200 transition-colors">Doctor Dashboard</Link>
+            </>
+          )}
+          {isLoggedIn && userType === 'patient' && false && (
+            <Link href="/my-reports" className="hover:text-blue-200 transition-colors">My Reports</Link>
           )}
           {isLoggedIn ? (
             <div className="relative profile-menu ml-6">
@@ -238,6 +253,15 @@ export default function Navbar() {
             )}
             {isLoggedIn && userType === 'admin' && (
               <Link href="/admin" className="hover:text-blue-200 transition-colors w-full" onClick={() => setMobileMenuOpen(false)}>Admin Dashboard</Link>
+            )}
+            {isLoggedIn && userType === 'doctor' && false && (
+              <>
+                <Link href="/upload-report" className="hover:text-blue-200 transition-colors w-full" onClick={() => setMobileMenuOpen(false)}>Upload Report</Link>
+                <Link href="/doctors/dashboard" className="hover:text-blue-200 transition-colors w-full" onClick={() => setMobileMenuOpen(false)}>Doctor Dashboard</Link>
+              </>
+            )}
+            {isLoggedIn && userType === 'patient' && (
+              <Link href="/my-reports" className="hover:text-blue-200 transition-colors w-full" onClick={() => setMobileMenuOpen(false)}>My Reports</Link>
             )}
             {isLoggedIn ? (
               <button
