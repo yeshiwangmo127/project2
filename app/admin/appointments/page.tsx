@@ -105,7 +105,7 @@ export default function AdminAppointmentsPage() {
   return (
     <main className="min-h-screen py-12" style={{ backgroundColor: "#7ea6f7" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-blue-300 bg-opacity-80 rounded-3xl shadow-lg p-8">
+        <div className="bg-white bg-opacity-80 rounded-3xl shadow-lg p-8">
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-4xl font-bold">Appointment Management</h1>
             <Link href="/admin" className="border-2 border-black rounded-lg px-4 py-2 text-sm font-medium hover:bg-black hover:text-white transition">

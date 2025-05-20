@@ -192,8 +192,8 @@ export default function AdminPage() {
 
   useEffect(() => {
     // Check if user is admin
-    const isAdmin = localStorage.getItem('isAdmin');
-    if (!isAdmin) {
+    const userType = localStorage.getItem('currentUserType');
+    if (userType !== 'admin') {
       router.push('/login');
       return;
     }
