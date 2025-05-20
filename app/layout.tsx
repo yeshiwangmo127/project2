@@ -8,8 +8,8 @@ import { usePathname } from 'next/navigation'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Your App Title',
-  description: 'Your app description',
+  title: 'Hospital Management System',
+  description: 'A modern hospital management system',
 }
 
 export default function RootLayout({

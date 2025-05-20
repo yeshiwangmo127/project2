@@ -1,7 +1,6 @@
-import NextAuth from "next-auth";
-import { authOptions } from "../authOptions";
+import { AuthOptions } from 'next-auth';
+import { JWT } from 'next-auth/jwt';
 
-// Type augmentations (if needed)
 declare module 'next-auth' {
   interface Session {
     user: {
@@ -15,11 +14,36 @@ declare module 'next-auth' {
     type: string;
   }
 }
+
 declare module 'next-auth/jwt' {
   interface JWT {
     type?: string;
   }
 }
 
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+export const authOptions: AuthOptions = {
+  providers: [],
+  callbacks: {
+    async session({ session, token }) {
+      if (session?.user) {
+        session.user.id = token.sub as string;
+        session.user.type = token.type as string;
+      }
+      return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.type = user.type;
+      }
+      return token;
+    }
+  },
+  pages: {
+    signIn: '/login',
+  },
+  session: {
+    strategy: 'jwt',
+  }
+};
+
+export { default } from "next-auth/next"; 

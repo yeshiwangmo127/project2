@@ -15,68 +15,59 @@ interface Availability {
 
 interface DoctorInput {
   name: string;
-  specialization: string;
+  specialty: string;
   department: string;
-  qualification: string;
-  experience: number;
+  qualifications: string;
 }
 
 const doctors: DoctorInput[] = [
   {
     name: 'John Smith',
-    specialization: 'Cardiologist',
+    specialty: 'Cardiologist',
     department: 'Cardiology',
-    qualification: 'MD, FACC',
-    experience: 15
+    qualifications: 'MD, FACC'
   },
   {
     name: 'Sarah Johnson',
-    specialization: 'Pediatrician',
+    specialty: 'Pediatrician',
     department: 'Pediatrics',
-    qualification: 'MD, FAAP',
-    experience: 12
+    qualifications: 'MD, FAAP'
   },
   {
     name: 'Michael Chen',
-    specialization: 'Ophthalmologist',
+    specialty: 'Ophthalmologist',
     department: 'Ophthalmology',
-    qualification: 'MD, FACS',
-    experience: 10
+    qualifications: 'MD, FACS'
   },
   {
     name: 'Emily Brown',
-    specialization: 'Dentist',
+    specialty: 'Dentist',
     department: 'Dentistry',
-    qualification: 'DDS, MS',
-    experience: 8
+    qualifications: 'DDS, MS'
   },
   {
     name: 'David Wilson',
-    specialization: 'Anesthesiologist',
+    specialty: 'Anesthesiologist',
     department: 'Anesthesiology',
-    qualification: 'MD, FASA',
-    experience: 14
+    qualifications: 'MD, FASA'
   },
   {
     name: 'Lisa Anderson',
-    specialization: 'Cardiologist',
+    specialty: 'Cardiologist',
     department: 'Cardiology',
-    qualification: 'MD, PhD',
-    experience: 20
+    qualifications: 'MD, PhD'
   },
   {
     name: 'Robert Taylor',
-    specialization: 'Pediatrician',
+    specialty: 'Pediatrician',
     department: 'Pediatrics',
-    qualification: 'MD, MPH',
-    experience: 11
+    qualifications: 'MD, MPH'
   },
   {
     name: 'Maria Garcia',
-    specialization: 'Ophthalmologist',
+    specialty: 'Ophthalmologist',
     department: 'Ophthalmology',
-    qualification: 'MD, FACS',
-    experience: 9
+    qualifications: 'MD, FACS'
   }
 ];
 
