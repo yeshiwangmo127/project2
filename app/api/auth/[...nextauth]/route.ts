@@ -21,7 +21,7 @@ declare module 'next-auth/jwt' {
   }
 }
 
-export const authOptions: AuthOptions = {
+const authOptions: AuthOptions = {
   providers: [],
   callbacks: {
     async session({ session, token }) {
@@ -47,5 +47,4 @@ export const authOptions: AuthOptions = {
 };
 
 const handler = NextAuth(authOptions);
-
 export { handler as GET, handler as POST }; 
