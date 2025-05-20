@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server';
 import connectDB from '@/lib/mongodb';
 import Report from '@/models/report';
 
-export const runtime = 'nodejs';
+// Mark this route as dynamic
+export const dynamic = 'force-dynamic';
 
 export async function GET(req: Request) {
   try {
@@ -30,7 +31,7 @@ export async function GET(req: Request) {
       headers,
     });
   } catch (error: any) {
-    console.error('❌ Download error:', error.message);
+    console.error('Error downloading report:', error);
     return NextResponse.json({ error: 'Failed to download report' }, { status: 500 });
   }
 }
