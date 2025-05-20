@@ -5,12 +5,6 @@ import { writeFile } from 'fs/promises';
 import fs from 'fs';
 import path from 'path';
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 export async function POST(req: NextRequest) {
   await dbConnect();
   try {
