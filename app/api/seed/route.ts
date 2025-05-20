@@ -15,59 +15,68 @@ interface Availability {
 
 interface DoctorInput {
   name: string;
-  specialty: string;
+  specialization: string;
   department: string;
-  qualifications: string;
+  qualification: string;
+  experience: number;
 }
 
 const doctors: DoctorInput[] = [
   {
     name: 'John Smith',
-    specialty: 'Cardiologist',
+    specialization: 'Cardiologist',
     department: 'Cardiology',
-    qualifications: 'MD, FACC'
+    qualification: 'MD, FACC',
+    experience: 15
   },
   {
     name: 'Sarah Johnson',
-    specialty: 'Pediatrician',
+    specialization: 'Pediatrician',
     department: 'Pediatrics',
-    qualifications: 'MD, FAAP'
+    qualification: 'MD, FAAP',
+    experience: 12
   },
   {
     name: 'Michael Chen',
-    specialty: 'Ophthalmologist',
+    specialization: 'Ophthalmologist',
     department: 'Ophthalmology',
-    qualifications: 'MD, FACS'
+    qualification: 'MD, FACS',
+    experience: 10
   },
   {
     name: 'Emily Brown',
-    specialty: 'Dentist',
+    specialization: 'Dentist',
     department: 'Dentistry',
-    qualifications: 'DDS, MS'
+    qualification: 'DDS, MS',
+    experience: 8
   },
   {
     name: 'David Wilson',
-    specialty: 'Anesthesiologist',
+    specialization: 'Anesthesiologist',
     department: 'Anesthesiology',
-    qualifications: 'MD, FASA'
+    qualification: 'MD, FASA',
+    experience: 14
   },
   {
     name: 'Lisa Anderson',
-    specialty: 'Cardiologist',
+    specialization: 'Cardiologist',
     department: 'Cardiology',
-    qualifications: 'MD, PhD'
+    qualification: 'MD, PhD',
+    experience: 20
   },
   {
     name: 'Robert Taylor',
-    specialty: 'Pediatrician',
+    specialization: 'Pediatrician',
     department: 'Pediatrics',
-    qualifications: 'MD, MPH'
+    qualification: 'MD, MPH',
+    experience: 11
   },
   {
     name: 'Maria Garcia',
-    specialty: 'Ophthalmologist',
+    specialization: 'Ophthalmologist',
     department: 'Ophthalmology',
-    qualifications: 'MD, FACS'
+    qualification: 'MD, FACS',
+    experience: 9
   }
 ];
 
