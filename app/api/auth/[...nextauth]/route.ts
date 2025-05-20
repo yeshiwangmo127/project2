@@ -1,4 +1,4 @@
-import { AuthOptions } from 'next-auth';
+import NextAuth, { AuthOptions } from "next-auth";
 import { JWT } from 'next-auth/jwt';
 
 declare module 'next-auth' {
@@ -46,4 +46,6 @@ export const authOptions: AuthOptions = {
   }
 };
 
-export { default } from "next-auth/next"; 
+const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST }; 
