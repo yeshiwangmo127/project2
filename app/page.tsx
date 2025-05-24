@@ -87,14 +87,16 @@ export default function Home() {
             </p>
             <div className="mt-2 sm:mt-4 flex gap-1 sm:gap-2 justify-center flex-nowrap flex-wrap">
               {[
-                { name: 'Facebook', icon: 'facebook' },
-                { name: 'Twitter', icon: 'twitter' },
-                { name: 'Instagram', icon: 'instagram' },
-                { name: 'Skype', icon: 'skype' },
-              ].map(({ name, icon }) => (
+                { name: 'Facebook', icon: 'facebook', url: 'https://www.facebook.com/PurePathMedical' },
+                { name: 'Twitter', icon: 'twitter', url: 'https://twitter.com/PurePathMedical' },
+                { name: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/purepathmedical' },
+                { name: 'LinkedIn', icon: 'linkedin', url: 'https://www.linkedin.com/company/purepathmedical' },
+              ].map(({ name, icon, url }) => (
                 <a
-                  href="#"
+                  href={url}
                   key={name}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-1 px-2 py-1 border-2 border-black rounded-lg text-xs font-medium hover:bg-black hover:text-white transition"
                 >
                   <i className={`bi bi-${icon} text-base`}></i>
