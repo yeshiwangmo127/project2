@@ -15,14 +15,21 @@ export default function Footer() {
         <div className="flex flex-col items-start justify-center">
           <span className="text-lg sm:text-xl font-bold mb-1">Know about us more on</span>
           <div className="flex flex-wrap gap-2 justify-start">
-            {['facebook', 'twitter', 'instagram', 'skype'].map((platform) => (
+            {[
+              { name: 'Facebook', icon: 'facebook', url: 'https://www.facebook.com/PurePathMedical' },
+              { name: 'Twitter', icon: 'twitter', url: 'https://twitter.com/PurePathMedical' },
+              { name: 'Instagram', icon: 'instagram', url: 'https://www.instagram.com/purepathmedical' },
+              { name: 'LinkedIn', icon: 'linkedin', url: 'https://www.linkedin.com/company/purepathmedical' },
+            ].map(({ name, icon, url }) => (
               <a
-                href="#"
-                key={platform}
+                href={url}
+                key={name}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-1 px-2 py-1 border-2 border-white rounded-lg text-xs font-medium hover:bg-white hover:text-gray-800 transition"
               >
-                <i className={`bi bi-${platform} text-base`}></i>
-                {platform.charAt(0).toUpperCase() + platform.slice(1)}
+                <i className={`bi bi-${icon} text-base`}></i>
+                {name}
               </a>
             ))}
           </div>
